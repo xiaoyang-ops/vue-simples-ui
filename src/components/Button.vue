@@ -4,16 +4,18 @@
   </button>
 </template>
 
-<script>
-export default {
-  name: "Button",
-  props: {
-    type: {
-      type: String,
-      default: "",
-    },
+<script setup>
+import { defineProps } from "vue";
+const props = defineProps({
+  type: {
+    type: String,
+    default: "",
   },
-};
+  disabled: {
+    type: Boolean,
+    default: false,
+  },
+});
 </script>
 
 <style>
@@ -45,8 +47,26 @@ export default {
   border-radius: 4px;
 }
 .btn.primary {
-  background-color: #007bff;
+  display: inline-block;
+  line-height: 1;
+  white-space: nowrap;
+  cursor: pointer;
+  background: #002fff;
+  border: 1px solid #dcdfe6;
   color: white;
+  -webkit-appearance: none;
+  text-align: center;
+  box-sizing: border-box;
+  outline: none;
+  margin: 0;
+  transition: 0.1s;
+  font-weight: 500;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  padding: 12px 20px;
+  font-size: 14px;
+  border-radius: 4px;
 }
 
 .btn.secondary {

@@ -4,44 +4,34 @@
   </div>
 </template>
 
-<script>
-import { ref } from "vue";
+<script setup>
+import { ref, onMounted } from "vue";
 
-export default {
-  name: "Video",
-  props: {
-    src: {
-      type: String,
-      required: true,
-    },
-    poster: {
-      type: String,
-      default: "",
-    },
+const props = defineProps({
+  src: {
+    type: String,
+    required: true,
   },
-  setup() {
-    const videoElement = ref(null);
-
-    // 这里可以通过方法控制视频的播放/暂停等操作
-    const play = () => {
-      if (videoElement.value) {
-        videoElement.value.play();
-      }
-    };
-
-    const pause = () => {
-      if (videoElement.value) {
-        videoElement.value.pause();
-      }
-    };
-
-    return {
-      videoElement,
-      play,
-      pause,
-    };
+  poster: {
+    type: String,
+    default: "",
   },
+});
+
+const videoElement = ref(null);
+
+const play = () => {
+  if (videoElement.value) {
+    videoElement.value.play();
+  }
 };
+
+const pause = () => {
+  if (videoElement.value) {
+    videoElement.value.pause();
+  }
+};
+onMounted(() => {});
 </script>
 
 <style>
